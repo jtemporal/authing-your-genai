@@ -2,7 +2,11 @@
 
 To allow your application to interact with Google services like Gmail, we need to register it with Google and get API credentials.
 
-For this you'll need a [Google Developer Account](https://console.developers.google.com/), a Google project, enable the Gmail API, and configuring an OAuth consent screen and credentials.
+For this you'll need
+* [Google Developer Account](https://console.developers.google.com/)
+* a Google project, 
+* The Gmail API enabled
+* A configured OAuth consent screen and credentials.
 
 You can follow the steps on the [Google Sign-in and Authorization](https://auth0.com/ai/docs/google-sign-in-and-auth) section of the Auth for GenAI Docs.
 
@@ -18,7 +22,7 @@ First create and setup the Google Project, then enable the Gmail API:
 
 1. Go to [Google Cloud Console](https://console.developers.google.com/) and create a new project or select an existing one.
 ![](images/03-1-google-project-creation.png)
-2. Go to the [Gmail API](https://console.cloud.google.com/apis/library/gmail.googleapis.com) and enable it.
+2. Select **APIs & Services, then click enable APIs & Services, select the Gmail API  [Gmail API](https://console.cloud.google.com/apis/library/gmail.googleapis.com) and enable it.
     * Make sure your project is selected at the top left corner
 
     ![](images/03-2-gmail-api.png)
@@ -27,24 +31,17 @@ Then you need to configure the Application:
 
 1. Go to the [Google Auth Platform](https://console.cloud.google.com/auth/overview) and create the app:
 ![](images/03-3-consent-screen-configuration-initial.png)
-    1. Click **Get Started**
-    1. Create an App:
+    1. Click **Branding** on the left side menu
+    2. Create an App:
         * **App Name**: dev_day
         * **User support email**: choose your preferred email.
-        * Click **Next**
-    1. Select your Audience
+        * **Authorized domains**, enter `auth0.com`
+        * **Developer contact information**,type your email
+    3. Select **Audience**
         * Choose **External**
-    1. Set the Contact Information:
-        * You can type your email
-    1. Finish:
-        * Agree and Create
+        * Under **Test users**, add the email address, you want to use for testing
+        * Test users must be valid Gmail Accounts.
 
-2. Now go to **Branding** on the left hand side menu:
-    * Under **Authorized domains**, enter `auth0.com`
-
-3. Go to **Audience** on the left hand side menu:
-    * In _Test Users_, you can add the email addresses you want to use for testing.
-    * Test users must be valid Gmail Accounts.
 
 4. Finally, on **Data Access** add the GMail scope:
     * Filter for Gmail and select the scopes:

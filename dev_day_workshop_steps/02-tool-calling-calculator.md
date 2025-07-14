@@ -1,24 +1,24 @@
 # Adding the first tool calling feature: A calculator
 
-As a practice implementing a tool call let's add a calculator so our assistant knows how to do math.
+Before we make Google tool calls, let's use a calculator tool call to see the tool calling in action.  
 
 ## Updating the Agent
 
 The agent code is implementend in the `src/api/chat/route.ts`. To add a calculator you'll need a LangChain community tool. Since this dependency is already installed you can import it.
 
-Open `src/api/chat/route.ts` and update the list of imports:
+Open `src/app/api/chat/route.ts` and update the list of imports:
 
 ```ts
-// src/api/chat/route.ts
+// src/app/api/chat/route.ts
 import { Calculator } from "@langchain/community/tools/calculator";
 ```
 
-To then use this as part of the tools you'll need to update the `POST` function. This function takes care of all post requests from our chat. (TODO check this)
+To then use this as part of the tools you'll need to update the `POST` function. 
 
-Then in the `POST` function, right before the `llm` variable let's add a `tools` constant like this:
+Then in the `POST` function, right before the `llm` variable let's add a `tools` variable like this:
 
 ```ts
-// src/api/chat/route.ts
+// src/app/api/chat/route.ts
 // ...
 export async function POST(req: NextRequest) {
   // ...
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
 You'll also need to update the agent creation to remove the default empty array from this:
 
 ```ts
-// src/api/chat/route.ts
+// src/app/api/chat/route.ts
 // ...
 const agent = createReactAgent({
       llm,
@@ -69,4 +69,4 @@ And you should see the answer in the chat window like so:
 
 ---
 
-With these completed you are ready for [the next step](03-tool-calling-gmail.md).
+With these completed you are ready for [the next step](03-setting-up-google.md).

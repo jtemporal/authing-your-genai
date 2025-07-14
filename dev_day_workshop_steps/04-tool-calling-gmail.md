@@ -58,7 +58,7 @@ The `GmailSearch` is used to do the actual look up in your inbox.
 Then in the `POST` function, right before the `tools` variable let's add a `gmailParams` and update the list of tools like this:
 
 ```ts
-// src/api/chat/route.ts
+// src/app/api/chat/route.ts
 // ...
 export async function POST(req: NextRequest) {
     // ...
@@ -84,7 +84,7 @@ Now test it!
 
 If your server is not running run `npm run dev`. Open your app, log in with Google, and try a prompt like: "Check my last unread email?"
 
--> TODO: Add image
+![](images/10-gmail-tool-call.png)
 
 And you should see this call on the terminal running your server:
 
@@ -113,7 +113,7 @@ The `GmailCreateDraft` is used to draft emails for you.
 Then in the `POST` function, update the `tools` variable land add the new draft tool like this:
 
 ```ts
-// src/api/chat/route.ts
+// src/app/api/chat/route.ts
 // ...
 export async function POST(req: NextRequest) {
     // ...
@@ -128,9 +128,9 @@ export async function POST(req: NextRequest) {
 }
 ```
 
-And once you save the file you can ask Assistant0 to draft a response for you with the prompt "Now draft an answer to that email please"
+And once you save the file you can ask Assistant0 to draft a response for you with the prompt "Now draft an email to (insert email here) with this subject and this message"
 
--> TODO add image
+![](11-gmail-draft-tool-call.png)
 
 And you should the log of the tool call on your terminal running the server like so:
 
@@ -146,4 +146,4 @@ Tool calls state: {
 
 ---
 
-With these you completed the workshop and are now ready for [the recap](06-recap.md).
+With these you completed the workshop and are now ready for [the recap](05-recap.md).

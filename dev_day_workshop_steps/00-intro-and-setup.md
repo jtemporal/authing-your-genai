@@ -17,32 +17,43 @@ We are going to add two integrations:
 
 ## Set Up
 
-We recommend using GitHub Codespaces for this workshop and the steps are outline below.
+1. Clone the Repository:
+  ```bash
+  git clone <your-repository-url>
+  cd <your-repository-name>/auth0-assistant0
+  ```
 
-You can find instructions for other coding environments on the [README.md](TODO) of the parent repository.
+2. Install Prerequisites:
+  * Ensure you have Node.js (v20 or later recommended, matching the blog post's suggestion) and npm/yarn/bun installed. The blog post specifically mentions `Bun v1.2` or `NodeJS v20`.
+  * Visual Studio Code (latest version recommended).
 
-### Environment Set Up
+3. Install Dependencies: Open the project in VS Code. Open the integrated terminal (View > Terminal).
 
-1. Navigate to the repository on GitHub.
-2. Click the green **Code** button, then select the **Codespaces** tab.
-3. Click **Create codespace on main** to start a new Codespace.
-4. Wait for the `postCreateCommand` finish and the Codespace to complete the setup, this might take about **2~3 minutes**.
-    1. The Codespace setup will create the python environments and install the necessary dependencies.
-5. OpenAI account:
+  ```bash
+  npm install
+  # or
+  bun install
+  ```
+
+4. OpenAI account:
   * Make sure you have an [OpenAI account and an OpenAI API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).
   * Save the OpenAI API key to your `.env.local`.
 
-Once the Codespace is ready and you have your OpenAI API key in `.env.local`, you'll be ready continue on.
+Once the project is ready and you have your OpenAI API key in `.env.local`, you'll be ready continue on.
 
-### Setting up your Auth0 account
+### Setting up your Auth for GenAI Auth0 account
 
-For this workshop you'll need an Auth0 account and a new Tenant specific for GenAI. Since Auth for GenAI is in Developer Preview for the moment so you'll need a new tentant as it will enable and configure some Auth0 features for you.
+For this workshop, you will need an Auth0 account, if you already have an Auth0 account you need a new Tenant to get the Auth For GenAI features.
+
+### Why do I need a new tentant?
+Since our "Auth for GenAI" feature is currently in Developer Preview, you must create a new tenant to ensure the necessary features are automatically enabled and configured for our session.
+
 
 [Navigate to this page](https://auth0.com/ai/docs/user-authentication) and follow the first two pre-requisites steps in the image below.
 
 ![](images/00-1-setup-auth0-account-and-app-auth-for-genai-enabled.png)
 
-Once you click **Create Account** you can also login to your account but you'll have to accept the terms and conditions and chose the region for your new tentant.
+Once you click **Create Account**, login to your account and accept the terms and conditions and chose the region for your new tentant.
 
 ![](images/00-2-setup-auth0-account-and-app-auth-for-genai-enabled.png)
 

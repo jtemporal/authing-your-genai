@@ -22,8 +22,8 @@ This is the application structure:
 
 In the [Auth0 Dashboard](https://manage.auth0.com/#/applications) you should see a two applications:
 
-1. Default App; and
-1. WebApp Quickstart Client.
+1. Default App
+2. WebApp Quickstart Client.
 
 We are going to use the second as it was created and setup for us in the past step. Click on _WebApp Quickstart Client_ and in the **Settings** tab you are going to copy 3 values to update the `.env.local` file like so:
 
@@ -31,12 +31,11 @@ We are going to use the second as it was created and setup for us in the past st
 1. Copy the **Client ID** and updae the `AUTH0_CLIENT_ID`;
 1. Copy the **Client Secret** and updae the `AUTH0_CLIENT_SECRET`.
 
-Now to finalize the update to the `.env.local` file, you need to generate a secret. Open the terminal and run the following command:
+Complete updating `.env.local` file, by generating a secret. Open the terminal and run the following command:
 
 ```sh
 openssl rand -hex 32
 ```
-
 Copy the output and update the `AUTH0_SECRET` with that value.
 
 ## Running Assistant0 for the first time
@@ -48,7 +47,6 @@ npm run dev
 # or
 bun dev
 ```
-
 And access [http://localhost:3000](http://localhost:3000), and you should see something like the image below:
 
 ![](images/01-1-assistant0-login-page.png)
