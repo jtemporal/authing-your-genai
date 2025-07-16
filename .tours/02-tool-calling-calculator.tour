@@ -1,0 +1,33 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "3 - Tool Calling: Calculator",
+  "nextTour": "4 - Setting up Google",
+  "steps": [
+    {
+      "title": "The Calculator",
+      "description": "# Adding the first tool calling feature: A calculator\n\nBefore we make Google tool calls, let's use a calculator tool call to see the tool calling in action.  \n\n## Updating the Agent\n\nThe agent code is implemented in the `src/api/chat/route.ts`. To add a calculator you'll need a LangChain community tool. Since this dependency is already installed you can import it."
+    },
+    {
+      "file": "auth0-assistant0/src/app/api/chat/route.ts",
+      "description": "\nOpen `src/app/api/chat/route.ts` and update the list of imports:\n\n```ts\nimport { Calculator } from \"@langchain/community/tools/calculator\";\n```",
+      "line": 7,
+      "title": "Importing the calculator"
+    },
+    {
+      "file": "auth0-assistant0/src/app/api/chat/route.ts",
+      "description": "Add a `tools` variable like this to use the calculator as tool in the chat:\n\n```ts\n  const tools = [new Calculator()];\n```",
+      "line": 27,
+      "title": "Create a list of tools"
+    },
+    {
+      "file": "auth0-assistant0/src/app/api/chat/route.ts",
+      "description": "You'll also need to update the agent creation to remove the default empty array from this:\n\n```ts\n      tools,\n```",
+      "line": 38,
+      "title": "Pass the tools to the agent"
+    },
+    {
+      "title": "Use the tool",
+      "description": "If your server is not running, run it then try asking the assistant to perform some calculations. For example: \"_what is (2+56) x 200_\".\n\nYou should see the answer in the UI. If you check the terminal where the development server is running, you should see the tool calling data like below:\n\n```txt\nTool calls state: {\n \"call_E3Za9klJcJ5TADWiMj8XfjdB\": {\n   \"name\": \"calculator\",\n   \"args\": \"{\\n  \\\"input\\\": \\\"(2+56) * 200\\\"\\n}\"\n }\n}\nPOST /api/chat 200 in 8382ms\n```\n\nAnd you should see the answer in the chat window like so:\n\n![](images/02-1-assistant0-calculator-tool-call-answer.png)"
+    }
+  ]
+}
