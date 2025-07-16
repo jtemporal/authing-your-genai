@@ -1,8 +1,15 @@
 {
-    "name": "dev_day(25) Workshop: Auth-ing your GenAI",
+    "name": "Dev Lab: Auth-ing your GenAI",
     "image": "mcr.microsoft.com/devcontainers/javascript-node",
     "containerEnv": {
       "ENV": "dev"
+    },
+    "customizations": {
+      "vscode": {
+        // Set *default* container specific settings.json values on container create.
+        "settings": {},
+        "extensions": ["vsls-contrib.codetour"]
+      }
     },
     "postCreateCommand": "bash .devcontainer/scripts/post-create.sh"
   }
