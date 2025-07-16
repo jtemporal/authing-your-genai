@@ -1,0 +1,53 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "1 - Authing your GenAI",
+  "nextTour": "2 - Running the application",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "# Introduction to Tool Calling and Assistant0 set up\n\nLet's get started! Our assistant named Assistant0 is an AI personal assistant that consolidates your digital life by dynamically accessing multiple tools to help you stay organized and efficient.\n\nIt is built in NextJS and we'll add tool calling to it to make it more powerful.\n\nIf you don't know NextJS don't worry, this workshop is meant to be friendly to developers of all levels. Click below to follow to the next step."
+    },
+    {
+      "title": "What is tool calling",
+      "description": "## What is tool calling\n\nTool calling is the way we call the integrations your GenAI-powered application has in order to gain some ability to interact with external services.\n\nFor example, a tool with Gmail and Google Calendar integration can help you speedily draft emails and schedule meetings.\n\nSo tools allow your AI agent to go beyond its pre-trained knowledge and interact with the real world, access private data securely, and perform actions on behalf of the user."
+    },
+    {
+      "title": "The project",
+      "description": "## Integrations we will implement during the workshop\n\nWe are going to add two integrations to the NextJS chat:\n\n1. **Calculator**: So our assistant can learn how to do calculations; and\n1. **Gmail Integration**: Assistant0 will be able to scan your inbox to generate concise summaries. It can highlight urgent emails, categorizes conversations by importance, and even suggests drafts for quick replies."
+    },
+    {
+      "title": "Pre-requisites",
+      "description": "## Pre-requisites\n\n1. OpenAI account:\n    * Make sure you have an [OpenAI account and an OpenAI API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).\n\n2. An Auth0 account:\n    * For this workshop, you will also need an Auth0 account;\n    * If you already have an Auth0 account you need a new Tenant to get the Auth For GenAI features. [Navigate to this page](https://auth0.com/ai/docs/user-authentication) and follow the first two pre-requisites steps in the image below.\n\n![](https://raw.githubusercontent.com/jtemporal/authing-your-genai/refs/heads/main/dev_day_workshop_steps/images/00-1-setup-auth0-account-and-app-auth-for-genai-enabled.png)\n",
+      "selection": {
+        "start": {
+          "line": 12,
+          "character": 6
+        },
+        "end": {
+          "line": 34,
+          "character": 11
+        }
+      }
+    },
+    {
+      "title": "Set Up Code",
+      "description": "## Set Up\n\nThe great thing about Codespaces is that the dependencies are installed when the Codespaces is initiated so you have everything you'll need as you work through the steps. 🎉",
+      "selection": {
+        "start": {
+          "line": 8,
+          "character": 12
+        },
+        "end": {
+          "line": 10,
+          "character": 20
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## OpenAI API Key\n\n1. Log in to your [OpenAI account and grab your OpenAI API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).\n2. Update the `OPENAI_API_KEY` to host the key you just created.\n\nThis will allow your assistant to use the OpenAI models.",
+      "line": 1,
+      "title": "SetUp - OpenAI API Key"
+    }
+  ]
+}
