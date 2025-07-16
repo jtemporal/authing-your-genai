@@ -17,37 +17,27 @@
     },
     {
       "title": "Pre-requisites",
-      "description": "## Pre-requisites\n\n1. OpenAI account:\n    * Make sure you have an [OpenAI account and an OpenAI API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).\n\n2. An Auth0 account:\n    * For this workshop, you will also need an Auth0 account;\n    * If you already have an Auth0 account you need a new Tenant to get the Auth For GenAI features. [Navigate to this page](https://auth0.com/ai/docs/user-authentication) and follow the first two pre-requisites steps in the image below.\n\n![](https://raw.githubusercontent.com/jtemporal/authing-your-genai/refs/heads/main/dev_day_workshop_steps/images/00-1-setup-auth0-account-and-app-auth-for-genai-enabled.png)\n",
-      "selection": {
-        "start": {
-          "line": 12,
-          "character": 6
-        },
-        "end": {
-          "line": 34,
-          "character": 11
-        }
-      }
+      "description": "## Pre-requisites\n\n1. OpenAI account:\n    * Make sure you have an [OpenAI account and an OpenAI API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).\n\n2. An Auth0 account:\n    * For this workshop, you will also need an Auth0 account;\n    * If you already have an Auth0 account you need a new Tenant to get the Auth For GenAI features. [Navigate to this page](https://auth0.com/ai/docs/user-authentication) and follow the first two pre-requisites steps in the image below.\n\n![](https://raw.githubusercontent.com/jtemporal/authing-your-genai/refs/heads/main/dev_day_workshop_steps/images/00-1-setup-auth0-account-and-app-auth-for-genai-enabled.png)\n"
     },
     {
       "title": "Set Up Code",
-      "description": "## Set Up\n\nThe great thing about Codespaces is that the dependencies are installed when the Codespaces is initiated so you have everything you'll need as you work through the steps. 🎉",
-      "selection": {
-        "start": {
-          "line": 8,
-          "character": 12
-        },
-        "end": {
-          "line": 10,
-          "character": 20
-        }
-      }
+      "description": "## Set Up\n\nThe great thing about Codespaces is that the dependencies are installed when the Codespaces is initiated so you have everything you'll need as you work through the steps. 🎉"
     },
     {
+      "title": "SetUp - OpenAI API Key",
       "file": "auth0-assistant0/.env.local",
       "description": "## OpenAI API Key\n\n1. Log in to your [OpenAI account and grab your OpenAI API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).\n2. Update the `OPENAI_API_KEY` to host the key you just created.\n\nThis will allow your assistant to use the OpenAI models.",
       "line": 1,
-      "title": "SetUp - OpenAI API Key"
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 17
+        },
+        "end": {
+          "line": 1,
+          "character": 29
+        }
+      }
     }
   ]
 }
