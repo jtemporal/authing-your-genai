@@ -1,0 +1,93 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "2 - Running the application",
+  "nextTour": "3 - Tool Calling: Calculator",
+  "steps": [
+    {
+      "title": "Assistant0",
+      "description": "# Running Assistant0 for the first time\n\nAssistant0 is built in NextJS and already has all the dependencies installed for you to start using it, including the the [Auth0 NextJS SDK](https://auth0.com/docs/quickstart/webapp/nextjs/01-login#install-the-auth0-next-js-sdk) to take care of auth for you.\n\nFor the GenAI portion we are going to use [LangGraph](https://www.langchain.com/langgraph)."
+    },
+    {
+      "title": "Understanding the code",
+      "description": "## Understanding the code\n\nThis is the application structure:\n\n- `src/app`: Contains the Next.js application routes, layout, and pages.\n- `src/app/page.tsx`: Home page with chat interface.\n- `src/app/api/chat/route.ts`: API route for handling chat requests. This is where the AI agent is defined.\n- `src/components`: UI components used in the application.\n- `src/lib`: Services and configurations. This is where custom tools will be defined.\n- `src/utils`: Utility functions\n- `.env.local`: File to hold the environment variables"
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - generate an application secret\n\nGenerate a secret to encode the values. Open the terminal and run the following command:\n\n```sh\nopenssl rand -hex 32\n```\n\nCopy the output and update the `AUTH0_SECRET` with that value.",
+      "line": 6,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 15
+        },
+        "end": {
+          "line": 6,
+          "character": 70
+        }
+      }
+    },
+    {
+      "title": "WebApp configuration variables",
+      "description": "## Auth0 application values\n\nIn the [Auth0 Dashboard](https://manage.auth0.com/#/applications) you should see a two applications:\n\n1. Default App\n2. WebApp Quickstart Client.\n\nIf you don't see it make sure you in the correct tenant, it must be the one we created a few steps back that starts with `genai` in the name.",
+      "selection": {
+        "start": {
+          "line": 7,
+          "character": 1
+        },
+        "end": {
+          "line": 9,
+          "character": 63
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - Domain\n\nClick on _WebApp Quickstart Client_ and in the **Settings** tab you are going to copy the **Domain** and update the `AUTH0_DOMAIN`;",
+      "line": 7,
+      "selection": {
+        "start": {
+          "line": 7,
+          "character": 15
+        },
+        "end": {
+          "line": 7,
+          "character": 35
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - Client ID\n\nClick on _WebApp Quickstart Client_ and in the **Settings** tab you are going to copy the **Client ID** and update the `AUTH0_CLIENT_ID`;",
+      "line": 8,
+      "selection": {
+        "start": {
+          "line": 8,
+          "character": 18
+        },
+        "end": {
+          "line": 8,
+          "character": 32
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - Client Secret\n\nClick on _WebApp Quickstart Client_ and in the **Settings** tab you are going to copy the **Client Secret** and update the `AUTH0_CLIENT_SECRET`.",
+      "line": 9,
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 22
+        },
+        "end": {
+          "line": 9,
+          "character": 40
+        }
+      }
+    },
+    {
+      "title": "Running the app",
+      "description": "## Running Assistant0 for the first time\n\nNow to start things run your application with the command below:\n\n```sh\nnpm run dev\n```\n\nAnd access [http://localhost:3000](http://localhost:3000). Make sure to sign up to your application."
+    }
+  ]
+}
