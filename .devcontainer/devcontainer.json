@@ -4,12 +4,12 @@
     "containerEnv": {
       "ENV": "dev"
     },
+    "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
     "customizations": {
       "vscode": {
         // Set *default* container specific settings.json values on container create.
         "settings": {},
         "extensions": ["vsls-contrib.codetour"]
       }
-    },
-    "postCreateCommand": "bash .devcontainer/scripts/post-create.sh"
+    }
   }
