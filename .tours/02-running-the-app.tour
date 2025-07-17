@@ -14,6 +14,42 @@
     {
       "file": "auth0-assistant0/.env.local",
       "description": "## Update `.env.local` - generate an application secret\n\nGenerate a secret to encode the values. Open the terminal and run the following command:\n\n```sh\nopenssl rand -hex 32\n```\n\nCopy the output and update the `AUTH0_SECRET` with that value.",
+      "line": 5,
+      "selection": {
+        "start": {
+          "line": 5,
+          "character": 15
+        },
+        "end": {
+          "line": 5,
+          "character": 70
+        }
+      }
+    },
+    {
+      "title": "Update `.env.local` - Set the app base URL",
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Update `.env.local` - Set the app base URL\n\nIn order to configure the app to work properly in the Codespace you need to set the base URL. Run the following in the terminal:\n\n```sh\necho $CODESPACE_NAME\n```\n\nCopy the output and update the `APP_BASE_URL` with that value.",
+      "line": 6,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 23
+        },
+        "end": {
+          "line": 6,
+          "character": 38
+        }
+      }
+    },
+    {
+      "title": "WebApp configuration variables",
+      "description": "## Auth0 application values\n\nIn the [Auth0 Dashboard](https://manage.auth0.com/#/applications) you should see a two applications:\n\n1. Default App\n2. WebApp Quickstart Client.\n\nIf you don't see it make sure you in the correct tenant, it must be the one we created a few steps back that starts with `genai` in the name.\n\nThen click on the **WebApp Quickstart Client** to see the Settings."
+    },
+    {
+      "title": "Update WebApp in the Dashboard",
+      "file": "auth0-assistant0/.env.local",
+      "description": "## Auth0 application values - WebApp Quickstart Client.\n\nNow scroll down to **Application URIs** and add the APP_BASE_URL to the settings like so:\n\n\n * In the **Allowed Callback URLs**: `https://{codespaceName}-3000.app.github.dev/auth/callback`\n * In the **Allowed Logout URLs**: `https://{codespaceName}-3000.app.github.dev/`\n\n![](dev_day_steps.jpg)\n![]()\n\nRemember to click save at the bottom of the page.",
       "line": 6,
       "selection": {
         "start": {
@@ -22,32 +58,18 @@
         },
         "end": {
           "line": 6,
-          "character": 70
-        }
-      }
-    },
-    {
-      "title": "WebApp configuration variables",
-      "description": "## Auth0 application values\n\nIn the [Auth0 Dashboard](https://manage.auth0.com/#/applications) you should see a two applications:\n\n1. Default App\n2. WebApp Quickstart Client.\n\nIf you don't see it make sure you in the correct tenant, it must be the one we created a few steps back that starts with `genai` in the name.",
-      "selection": {
-        "start": {
-          "line": 7,
-          "character": 1
-        },
-        "end": {
-          "line": 9,
-          "character": 63
+          "character": 100
         }
       }
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Domain\n\nClick on _WebApp Quickstart Client_ and in the **Settings** tab you are going to copy the **Domain** and update the `AUTH0_DOMAIN`;",
+      "description": "## Update `.env.local` - Domain\n\nNow scroll back to the **Basic Information** section in the **Settings** tab you are going to copy the **Domain** and update the `AUTH0_DOMAIN`;",
       "line": 7,
       "selection": {
         "start": {
           "line": 7,
-          "character": 15
+          "character": 23
         },
         "end": {
           "line": 7,
@@ -57,7 +79,7 @@
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Client ID\n\nClick on _WebApp Quickstart Client_ and in the **Settings** tab you are going to copy the **Client ID** and update the `AUTH0_CLIENT_ID`;",
+      "description": "## Update `.env.local` - Client ID\n\nCopy the **Client ID** and update the `AUTH0_CLIENT_ID`;",
       "line": 8,
       "selection": {
         "start": {
@@ -72,7 +94,7 @@
     },
     {
       "file": "auth0-assistant0/.env.local",
-      "description": "## Update `.env.local` - Client Secret\n\nClick on _WebApp Quickstart Client_ and in the **Settings** tab you are going to copy the **Client Secret** and update the `AUTH0_CLIENT_SECRET`.",
+      "description": "## Update `.env.local` - Client Secret\n\nCopy the **Client Secret** and update the `AUTH0_CLIENT_SECRET`.",
       "line": 9,
       "selection": {
         "start": {
@@ -87,7 +109,17 @@
     },
     {
       "title": "Running the app",
-      "description": "## Running Assistant0 for the first time\n\nNow to start things run your application with the command below:\n\n```sh\nnpm run dev\n```\n\nAnd access [http://localhost:3000](http://localhost:3000). Make sure to sign up to your application."
+      "description": "## Running Assistant0 for the first time\n\nNow to start things run your application with the command below in the terminal:\n\n```sh\ncd auth0-assistant0\nnpm run dev\n```\n\nAnd click on the **Open Browser** in the dialog that will appear in the bottom right corner.\n\nMake sure to sign up to your application and try asking it *\"What can you help me with?\"*",
+      "selection": {
+        "start": {
+          "line": 10,
+          "character": 154
+        },
+        "end": {
+          "line": 10,
+          "character": 182
+        }
+      }
     }
   ]
 }
