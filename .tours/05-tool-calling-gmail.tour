@@ -1,6 +1,95 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "5 - Tool Calling: GMail",
-  "nextTour": "",
-  "steps": []
+  "nextTour": "6 - Recap",
+  "steps": [
+    {
+      "title": "GMail",
+      "description": "# Adding the second tool calling feature: GMail\n\nNow for the exciting part! Let's  Actually add the Gmail tool in Assistant0 so it can interact with Gmail. \n\nYou already did most of the hard work: setting up a Google Cloud Project to get API credentials, configuring Auth0 to handle the authentication flow securely with Google. Now is time to update the agent code to use the Gmail tool.\n\nAll of this you've done so the application doesn't handle user Google credentials directly. Instead, Auth0 will manage the OAuth 2.0 flow with Google.",
+      "type": "markdown"
+    },
+    {
+      "title": "Auth0 Token Vault",
+      "description": "## Auth0 Token Vault\n\nWhen a user wants to use the Gmail integration, they'll be redirected to Google to grant permission. Auth0 will then securely store the necessary tokens (access and refresh tokens) in the [Token Vault](https://auth0.com/docs/secure/tokens/token-vault).\n\nOur AI agent, through the Auth0 AI SDK, will then request these tokens from Auth0 to make authenticated API calls to Gmail on the user's behalf. This keeps sensitive credentials out of our application code and gives users control over what the AI can access."
+    },
+    {
+      "file": "auth0-assistant0/src/lib/auth0-ai.ts",
+      "description": "## Access Token\n\nFirst, we need to get an access token for the Gmail API. We can get this using the Auth0 Token Vault.\n\nNow you need to do some updates the `auth0-ai.ts` file. Start by adding the new imports:\n\n```ts\nimport { getRefreshToken } from '@/lib/auth0';\nimport { Auth0AI } from '@auth0/ai-langchain';\n\n```\n\nThe first import is gets the function for retrieving refresh tokens. While the second import uses the Auth0 AI LangChain SDK to import a `Auth0AI` a constructor that facilitates using Auth0 with LangChain.",
+      "line": 4
+    },
+    {
+      "file": "auth0-assistant0/src/lib/auth0-ai.ts",
+      "description": "## Google Connection\n\nNow iniatialize the `auth0AI` and then create the connection with Google.\n```ts\nconst auth0AI = new Auth0AI();\n\n// Connection for Google services\nexport const withGoogleConnection = auth0AI.withTokenForConnection({\n  connection: 'google-oauth2',\n  scopes: ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.compose'],\n  refreshToken: getRefreshToken,\n});\n```\n\nHere we pass the scopes and the type of connection.\n\nKeep in mind that you'll need to \"login/sign up with Google\" on Assistant0 in order to leverage this feature.",
+      "line": 16,
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 1
+        },
+        "end": {
+          "line": 9,
+          "character": 29
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/src/app/api/chat/route.ts",
+      "description": "## Look for emails\n\nIn order to read your emails in the Assistant0 chat you'll also need to update the agent code. So open `src/app/api/chat/routes.ts` next to update the tool calling portion\n\nFirst start with the imports:\n\n```ts\nimport { GmailSearch } from '@langchain/community/tools/gmail';\nimport { withGoogleConnection, getAccessToken } from '@/lib/auth0-ai';\n\n```\n\nThe `GmailSearch` is used to do the actual look up in your inbox.",
+      "line": 10
+    },
+    {
+      "file": "auth0-assistant0/src/app/api/chat/route.ts",
+      "description": "Let's add a `gmailParams` which will pass the access token as credentials to our tool like this:\n\n```ts\n\nconst gmailParams = {\n    credentials: {\n    accessToken: getAccessToken,\n    },\n};\n\n```",
+      "line": 33,
+      "title": "gmailParams"
+    },
+    {
+      "file": "auth0-assistant0/src/app/api/chat/route.ts",
+      "description": "And update the list of tools like this:\n\n```ts\nconst tools = [\n    new Calculator(),\n    withGoogleConnection(new GmailSearch(gmailParams)),\n];\n```\n\nNow test it!",
+      "line": 40,
+      "title": "GMail in the tools list",
+      "selection": {
+        "start": {
+          "line": 36,
+          "character": 5
+        },
+        "end": {
+          "line": 36,
+          "character": 38
+        }
+      }
+    },
+    {
+      "title": "Testing the new tool",
+      "description": "If your server is not running run `npm run dev`. Open your app, log in with Google, and try a prompt like: _\"**Check my last unread email?**\"_\n\nAnd you should see this call on the terminal running your server:\n\n```\nTool calls state: {\n  \"call_Hp6nEUWanAyom7Uqc36YB4Ts\": {\n    \"name\": \"search_gmail\",\n    \"args\": \"{\\\"query\\\":\\\"is:unread\\\",\\\"maxResults\\\":1,\\\"resource\\\":\\\"messages\\\"}\"\n  }\n}\n POST /api/chat 200 in 1685ms\n```"
+    },
+    {
+      "title": "Drafting emails",
+      "description": "## Drafting emails\n\nNow that is all fine and well but the idea is to also draft emails for you, so let's add another tool."
+    },
+    {
+      "file": "auth0-assistant0/src/app/api/chat/route.ts",
+      "description": "## GmailCreateDraft\n\nFirst update the list of imports:\n\n```ts\nimport { GmailSearch, GmailCreateDraft } from '@langchain/community/tools/gmail';\n```\n\nThe `GmailCreateDraft` is used to draft emails for you.\n",
+      "line": 8,
+      "selection": {
+        "start": {
+          "line": 8,
+          "character": 1
+        },
+        "end": {
+          "line": 8,
+          "character": 68
+        }
+      }
+    },
+    {
+      "file": "auth0-assistant0/src/app/api/chat/route.ts",
+      "description": "## Adding Email Draft tool\n\nAdd the new draft tool to the list of `tools`:\n\n```ts\n      withGoogleConnection(new GmailCreateDraft(gmailParams)),\n```",
+      "line": 38
+    },
+    {
+      "title": "Test the drafting tool",
+      "description": "Now you can ask Assistant0 to draft a response for you with the prompt _\"**Now draft an email to (insert email here) with this subject and this message**\"_\n\nAnd you should the log of the tool call on your terminal running the server like so:\n\n```\nTool calls state: {\n  \"call_WtRe1LFmMjnpUHQd4ia7u5g4\": {\n    \"name\": \"create_gmail_draft\",\n    \"args\": \"{\\\"...\\\"}\"\n  }\n}\n POST /api/chat 200 in 3558ms\n```"
+    }
+  ]
 }
